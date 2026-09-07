@@ -1,14 +1,23 @@
 package com.pes.lib
 
-fun convert(names : Array<String?>){
+fun convert(names: Array<String?>) {
 
-    // TODO
-    // convert the name in array into uppercase -
-    // use explicit null check , safe call operator,
-    // elvis operator, assertion operator
+    for (name in names) {
+        // Explicit null check
+        if (name != null) {
+            println(name.uppercase())
+        }
+
+        // Safe call + Elvis operator
+        println(name?.uppercase() ?: "NULL")
+
+        // Assertion operator
+        if (name != null) {
+            println(name!!.uppercase())
+        }
+    }
 }
 
 fun main() {
-
     convert(arrayOf("john", null, "merry", "robert"))
 }
