@@ -1,14 +1,15 @@
 package com.pes.lib
 
-
-// TODO - add exception handling
 fun getNumber(data: String): Int {
-    // String.toInt()
-    return data.toInt()
+    return try {
+        data.toInt()
+    } catch (e: NumberFormatException) {
+        println("Invalid number")
+        0
+    }
 }
 
 fun main() {
-    getNumber("12") // string with only digits
-    getNumber("a1as")
+    println(getNumber("12"))
+    println(getNumber("a1as"))
 }
-
