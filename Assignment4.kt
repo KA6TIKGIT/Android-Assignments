@@ -1,7 +1,7 @@
 package com.pes.lib
 
 open class BankAccount(
-    var accName: String,
+    val accName: String,
     val accNumber: Int,
     var balance: Int = 0
 ) {
@@ -12,12 +12,11 @@ open class BankAccount(
     }
 }
 
-class SavingsAccount(
+class SavingAccount(
     accName: String,
     accNumber: Int,
-    balance: Int = 0,
-    var interestRate: Float
-) : BankAccount(accName, accNumber, balance) {
+    val interestRate: Float
+) : BankAccount(accName, accNumber) {
 
     fun credit(amount: Int) {
         balance += amount
@@ -28,9 +27,15 @@ class SavingsAccount(
     }
 
     override fun displayInfo() {
-        println("Name: $accName")
-        println("Account Number: $accNumber")
-        println("Balance: $balance")
+        super.displayInfo()
         println("Interest Rate: $interestRate")
     }
+}
+
+fun main() {
+    val account = SavingAccount("John", 12345, 6.5f)
+
+    account.credit(5000)
+    account.debit(1000)
+    account.displayInfo()
 }
